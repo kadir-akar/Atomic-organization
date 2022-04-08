@@ -115,10 +115,11 @@ h1 {
   color: white;
 }
 #checkbox-section {
+  padding: 10px;
   width: 700px;
   border-radius: 5px;
   margin-top: 110px;
-  height: 100px;
+  height: auto;
   background-color: var(--purple);
 }
 .center {
