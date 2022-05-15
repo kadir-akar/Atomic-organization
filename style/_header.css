@@ -1,10 +1,20 @@
-header {
-  background-color: var(--main);
-  color: black;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
-    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+#header{
+  background-color:var(--main);
+  height: 3.5rem;
   display: flex;
   justify-content: center;
-  height: 70px;
-  overflow: hidden;
+}
+.navigation-list{
+  max-width: 600px;
+  margin: 0 auto;
+}
+nav ul{
+  list-style-type: none;
+  padding: 0;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  /* gap: 0rem; */
 }

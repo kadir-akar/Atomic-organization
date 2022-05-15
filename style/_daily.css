@@ -43,6 +43,7 @@ li {
 }
 
 .container {
+  max-width: 1200px ;
   background-color: var(--main);
   margin-top: 50px;
   height: auto;
@@ -51,14 +52,15 @@ li {
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
     rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
-h1 {
+#hero-section h1 {
   text-align: center;
   padding-top: 15px;
 }
 #hero-section {
-  margin-top: 75px;
+  margin-top: 2.1rem;
   display: flex;
   justify-content: center;
+  flex-flow: row wrap;
 }
 .timer {
   background-color: var(--main);
@@ -112,9 +114,11 @@ h1 {
   height: auto;
   background-color: var(--purple);
 }
+#checkbox-section h3{
+  padding: 0.5rem;
+}
 .center {
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
 }
 #days {
   border-radius: 5px;
@@ -140,7 +144,6 @@ input[type="checkbox"] {
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
     rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   transition: width 2s, height 4s;
-
 }
 .clean:hover {
   background-color: #2d2d2d;
@@ -149,4 +152,10 @@ input[type="checkbox"] {
 }
 .container p {
   width: 23px;
+}
+@media screen and (max-width: 1200px) {
+  .timer {
+    height: auto;
+    width: 50%;
+  }
 }

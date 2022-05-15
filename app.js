@@ -83,8 +83,8 @@ checkboxes.forEach((checkbox) =>
 //chart.js grafik
 Chart.defaults.color = "black"  
 
-const ctx = document.getElementById('myChart').getContext('2d');
-const myChart = new Chart(ctx, {
+const week = document.getElementById('week').getContext('2d');
+const weekChart = new Chart(week,{
     type: 'bar',
     data: {
         labels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],

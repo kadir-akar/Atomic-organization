@@ -6,27 +6,31 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style\style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js" integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"
+    integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <title>Atomic Habits</title>
 </head>
 
-<body onload="load()"> 
+<body onload="load()">
   <header id="header">
     <div class="links">
-      <ul>
-        <li><a href="#daily" class="link">Daily</a></li>
-        <li><a href="#pointSection" class="link">Analyze</a></li>
-        <li><a href="#profile" class="link">Profile</a></li>
-      </ul>
+      <nav class="navigation-bar">
+        <ul class="navigation-list">
+          <li><a href="#daily" class="link navigation-link">Günlük</a></li>
+          <li><a href="#pointSection" class="link navigation-link">Analiz</a></li>
+
+          <li><a href="#profile" class="link navigation-link">Profil</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
   <div id="hero-section">
     <div class="container">
       <section id="daily">
-        <h1><i>Daily pomodoros</i></h1>
+        <h1><i>Günlük pomodorolar</i></h1>
         <div id="checkbox-section" class="center box-shadow">
-          <h3>To make multiple selections, hold down the shift key after the first selection and select to the desired
-            location.</h3>
+          <h3>Çoklu seçim yapmak için shift tuşuna basılı tutunuz.</h3>
 
         </div>
         <p class="enter box-shadow"></p>
@@ -223,27 +227,36 @@
         <button class="minute box-shadow tomato" id="reset" onclick="timer(0)">Reset</button>
       </div>
     </div>
+    
   </div>
-  <div id="pointSection">
-    <section id="point" class="box-shadow">
-      <canvas id="myChart" width="390" height="209"></canvas>
-    </section>
-  </div>
+  
+  <section id="pointSection">
+    <div id="point" class="box-shadow">
+      <canvas id="week" width="390" height="209"></canvas>
+    </div>
+
+  </section>
   <div id="profile">
     <section id="profile-section" class="box-shadow">
-      <div id="myProfile" class="box-shadow">
+      <div id="myProfile">
         <div class="profile-pic">
           <label class="-label" for="file">
             <span class="glyphicon glyphicon-camera"></span>
             <span>Change Image</span>
           </label>
-          <input id="file" type="file" onchange="loadFile(event)"/>
-          <img src="https://cdn.pixabay.com/photo/2017/08/06/21/01/louvre-2596278_960_720.jpg" id="output" width="200" />
+          <input id="file" type="file" onchange="loadFile(event)" />
+          <img src="https://cdn.pixabay.com/photo/2017/08/06/21/01/louvre-2596278_960_720.jpg" id="output"
+            width="200" />
           <div id="goal">
           </div>
         </div>
+        <form class="form">
+          <label for="name">Günlük çalışma hedefin</label>
+          <input type="number" name="goal" max="15">
+        </form>
       </div>
     </section>
+  </div>
   </div>
 </body>
 <script src="app.js"></script>

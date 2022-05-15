@@ -7,14 +7,13 @@
   margin: auto;
   background-color: var(--main);
   height: 80%;
-  width: 60%;
+  width: 50%;
   padding-top: 15px;
 }
 #myProfile{
   padding: 5px;
   top: 25px;
   margin: 0 auto;
-  background-color: var(--purple);
   height: 80%;
   width: 40%;
   border-radius: 15px;
@@ -65,4 +64,8 @@
 }
 body a:hover {
   text-decoration: none;
+}
+.form{
+  margin: 1rem;
+  padding: 0.5rem
 }
