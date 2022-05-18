@@ -9,3 +9,11 @@
   border-radius: 15px;
   width: 70%;
 }
+#chart_div{
+  margin: 0 auto;
+  width: auto;
+}
+.chart {
+  width: 100%; 
+  min-height: 450px;
+}

@@ -2,20 +2,18 @@
   height: 90vh;
   width: auto;
 }
-#profile-section{
+#profile-section {
   border-radius: 15px;
   margin: auto;
   background-color: var(--main);
-  height: 80%;
-  width: 50%;
-  padding-top: 15px;
+  height: 700px;
+  width: 620px;
+  padding-top: 1rem;
 }
-#myProfile{
+#myProfile {
   padding: 5px;
   top: 25px;
   margin: 0 auto;
-  height: 80%;
-  width: 40%;
   border-radius: 15px;
   text-align: center;
 }
@@ -37,7 +35,7 @@
   object-fit: cover;
   width: 165px;
   height: 165px;
-  box-shadow: 0 0 10px 0 rgba(255, 255, 255, .35);
+  box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.35);
   border-radius: 100px;
   z-index: 0;
 }
@@ -50,7 +48,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, .8);
+  background-color: rgba(0, 0, 0, 0.8);
   z-index: 10000;
   color: #fafafa;
   transition: background-color 0.2s ease-in-out;
@@ -65,7 +63,34 @@
 body a:hover {
   text-decoration: none;
 }
-.form{
+#survey-form {
   margin: 1rem;
-  padding: 0.5rem
+  padding: 0.5rem;
 }
+.form-control {
+  display: block;
+  margin: 0 auto;
+  width: 70%;
+  height: 2.3rem;
+  padding: 0.3rem 0.7rem;
+  color: #495057;
+  background-color: rgb(255, 255, 255);
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.form-control label {
+  font-size: 23px;
+}
+#survey-form button {
+  margin: 1rem;
+  width: 8rem;
+  height: 2rem;
+  font-size: 1.2rem;
+}
+/* @media only screen and (max-width: 1100px) {
+  #profile-section {
+    width: 80%;
+  }
+} */

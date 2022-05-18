@@ -43,7 +43,7 @@ li {
 }
 
 .container {
-  max-width: 1200px ;
+  max-width: 1200px;
   background-color: var(--main);
   margin-top: 50px;
   height: auto;
@@ -61,15 +61,17 @@ li {
   display: flex;
   justify-content: center;
   flex-flow: row wrap;
+  gap: 2rem;
 }
 .timer {
   background-color: var(--main);
   height: 700px;
-  width: 40%;
+  width: 520px;
   border-radius: 15px;
   margin-left: 15px;
   margin-top: 50px;
   text-align: center;
+  padding: 2.5rem;
 }
 .minute {
   font-size: large;
@@ -98,16 +100,12 @@ li {
   border-radius: 10px;
   margin-top: 9px;
 }
-.countdown{
-  background-color:var(--purple);
-  height: 350px;
-}
 .countdown button:hover {
   background-color: #2d2d2d;
   color: white;
 }
 #checkbox-section {
-  padding: 10px;
+  padding: 1rem;
   width: 700px;
   border-radius: 5px;
   margin-top: 70px;
@@ -153,9 +151,11 @@ input[type="checkbox"] {
 .container p {
   width: 23px;
 }
-@media screen and (max-width: 1200px) {
-  .timer {
-    height: auto;
-    width: 50%;
-  }
+.timer .info{
+  color: white;
+  background-color: var(--purple);
+  font-size: 1.5rem;
+  margin: 2rem;
+  padding: 1.1rem;
+  border-radius: 5px;
 }

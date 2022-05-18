@@ -6,15 +6,14 @@ const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]');
 const sundaych = document.querySelectorAll(".sunday-ch");
 const mondaych = document.querySelectorAll(".monday-ch");
 const tuesdaych = document.querySelectorAll(".tuesday-ch");
-const wednesdaych = document.querySelectorAll(".wednesday-ch")
-const thursdaych = document.querySelectorAll(".Thursday-ch")
-const fridaych = document.querySelectorAll(".friday-ch")
-const saturdaych = document.querySelectorAll(".saturday-ch")
-const totalPomodoros = document.querySelector(".TotalPomodoros")
-const audio = new Audio("https://dl.dropboxusercontent.com/s/1cdwpm3gca9mlo0/kick.mp3");
+const wednesdaych = document.querySelectorAll(".wednesday-ch");
+const thursdaych = document.querySelectorAll(".Thursday-ch");
+const fridaych = document.querySelectorAll(".friday-ch");
+const saturdaych = document.querySelectorAll(".saturday-ch");
+const totalPomodoros = document.querySelector(".TotalPomodoros");
+let d = new Date();
 
-let countTime;
-let lastChecked;
+// const days = ["sunday","monday","tuesday","wednesday","thursday","friday","saturday"]
 
 
 //functions
@@ -23,10 +22,9 @@ let lastChecked;
 function cleanTheDay(day) {
   for (const checkbox of day) {
     checkbox.checked = false;
-    localStorage.clear(day)
+    localStorage.clear(day);
   }
 }
-
 
 function timer(seconds) {
   //clear any existing timers
@@ -76,55 +74,55 @@ function handleCheck(e) {
   lastChecked = this;
 }
 
-checkboxes.forEach((checkbox) =>
-  checkbox.addEventListener("click", handleCheck)
-);
-
-//chart.js grafik
-Chart.defaults.color = "black"  
-
-const week = document.getElementById('week').getContext('2d');
-const weekChart = new Chart(week,{
-    type: 'bar',
-    data: {
-        labels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-        datasets: [{
-            label: 'point of day',
-            data: [5, 2, 6, 5, 7, 3,5],
-            backgroundColor: [
-                'rgba(255, 99, 132 , 0.3)',
-                'rgba(54, 162, 235, 0.3)',
-                'rgba(255, 206, 86, 0.3)',
-                'rgba(75, 192, 192, 0.3)',
-                'rgba(153, 102, 255, 0.3)',
-                'rgba(255, 159, 64, 0.3)',
-                'rgba(53, 159, 64, 0.3)'
-            ],
-            color:"black",
-            borderColor: [
-                'black',
-                'black',
-                'black',
-                'black',
-                'black',
-                'black',
-                'black'
-            ],
-            borderWidth: 1,
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    }
+checkboxes.forEach((checkbox) => {
+  checkbox.addEventListener("click", handleCheck);
 });
 
+//chart.js grafik
+Chart.defaults.color = "black";
 
 //change image
 var loadFile = function (event) {
   var image = document.getElementById("output");
   image.src = URL.createObjectURL(event.target.files[0]);
 };
+const today = d.getDay();
+
+switch (today) {
+  case 1:
+    //pazartesi
+    sundaych.forEach((e) => {
+      e.removeAttribute("disabled");
+    });
+    break;
+  case 2:
+    mondaych.forEach((e) => {
+      e.removeAttribute("disabled");
+    });
+    break;
+  case 3:
+    tuesdaych.forEach((e) => {
+      e.removeAttribute("disabled");
+    });
+    break;
+  case 4:
+    wednesdaych.forEach((e) => {
+      e.removeAttribute("disabled");
+    });
+    break;
+  case 5:
+    thursdaych.forEach((e) => {
+      e.removeAttribute("disabled");
+    });
+    break
+  case 6:
+    fridaych.forEach((e) => {
+      e.removeAttribute("disabled");
+    });
+    break
+  case 7:
+    saturdaych.forEach((e) => {
+      e.removeAttribute("disabled");
+    });
+    break
+}
