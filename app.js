@@ -11,23 +11,26 @@ const thursdaych = document.querySelectorAll(".Thursday-ch");
 const fridaych = document.querySelectorAll(".friday-ch");
 const saturdaych = document.querySelectorAll(".saturday-ch");
 const totalPomodoros = document.querySelector(".TotalPomodoros");
+const quoteH = document.getElementById("checkbox-section");
 
+let totalC = 0;
 let countTime;
 let lastChecked;
 let theDay;
+
 const d = new Date();
 const today = d.getDay();
+
 //functions
 
 //clean checkboxes
 function cleanTheDay(day) {
   for (const checkbox of day) {
     checkbox.checked = false;
-    localStorage.clear(day);
   }
 }
-window.addEventListener('DOMContentLoaded', () => {
-  whichDay()
+window.addEventListener("DOMContentLoaded", () => {
+  whichDay();
 });
 function timer(seconds) {
   //clear any existing timers
@@ -59,37 +62,22 @@ function displayTimeLeft(seconds) {
   countdown.textContent = display;
 }
 
-//hold the shift
-function handleCheck(e) {
-  let inBetween = false;
-  if (e.shiftKey && this.checked) {
-    //loop over every single checkbox
-    checkboxes.forEach((checkbox) => {
-      if (checkbox === this || checkbox === lastChecked) {
-        inBetween = !inBetween;
-      }
-      if (inBetween) {
-        checkbox.checked = true;
-      }
-    });
-  }
-
-  lastChecked = this;
-}
-
-checkboxes.forEach((checkbox) => {
-  checkbox.addEventListener("click", handleCheck);
-});
-
-//chart.js grafik
-Chart.defaults.color = "black";
-
 //change image
 var loadFile = function (event) {
   var image = document.getElementById("output");
   image.src = URL.createObjectURL(event.target.files[0]);
 };
 
+//total pomodoro
+checkboxes.forEach((checkbox) => {
+  checkbox.addEventListener("click", () => {
+    if (checkbox.checked == true) {
+      console.log("hi");
+    }
+  });
+});
+
+//check the day
 const days = [
   mondaych,
   tuesdaych,
@@ -101,8 +89,24 @@ const days = [
 ];
 
 function whichDay() {
-  theDay = days[today-1]
+  theDay = days[today - 1];
   theDay.forEach((e) => {
     e.removeAttribute("disabled");
   });
 }
+
+//quote generator
+
+const quotes = [
+  "Eğlenen biriyle kıyaslanamazsın.",
+  "Hedefe değil sisteme odaklan.",
+  "dikkat yoğunluğu + çalışma süresi = yüksek kaliteli iş miktarı.",
+  "Hergün %1 lik bir gelişim yıl sonu %37 lik ilerlemeye tekabül eder.",
+  "Derin olmayan çalışmanın dünyaya ve kişiye faydası yoktur.",
+];
+function generateQuote() {
+  var randomNumber = Math.floor(Math.random() * quotes.length);
+  var quote = quotes[randomNumber];
+  quoteH.innerHTML = `<h3>${quote}</h3>`;
+}
+generateQuote()
