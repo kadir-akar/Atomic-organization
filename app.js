@@ -11,11 +11,12 @@ const thursdaych = document.querySelectorAll(".Thursday-ch");
 const fridaych = document.querySelectorAll(".friday-ch");
 const saturdaych = document.querySelectorAll(".saturday-ch");
 const totalPomodoros = document.querySelector(".TotalPomodoros");
-let d = new Date();
 
-// const days = ["sunday","monday","tuesday","wednesday","thursday","friday","saturday"]
-
-
+let countTime;
+let lastChecked;
+let theDay;
+const d = new Date();
+const today = d.getDay();
 //functions
 
 //clean checkboxes
@@ -86,43 +87,21 @@ var loadFile = function (event) {
   var image = document.getElementById("output");
   image.src = URL.createObjectURL(event.target.files[0]);
 };
-const today = d.getDay();
+const days = [
+  mondaych,
+  tuesdaych,
+  wednesdaych,
+  thursdaych,
+  fridaych,
+  saturdaych,
+  sundaych,
+];
+// console.log(dayForCheckbox);
 
-switch (today) {
-  case 1:
-    //pazartesi
-    sundaych.forEach((e) => {
-      e.removeAttribute("disabled");
-    });
-    break;
-  case 2:
-    mondaych.forEach((e) => {
-      e.removeAttribute("disabled");
-    });
-    break;
-  case 3:
-    tuesdaych.forEach((e) => {
-      e.removeAttribute("disabled");
-    });
-    break;
-  case 4:
-    wednesdaych.forEach((e) => {
-      e.removeAttribute("disabled");
-    });
-    break;
-  case 5:
-    thursdaych.forEach((e) => {
-      e.removeAttribute("disabled");
-    });
-    break
-  case 6:
-    fridaych.forEach((e) => {
-      e.removeAttribute("disabled");
-    });
-    break
-  case 7:
-    saturdaych.forEach((e) => {
-      e.removeAttribute("disabled");
-    });
-    break
+function whichDay() {
+  theDay = days[today-1]
+  theDay.forEach((e) => {
+    e.removeAttribute("disabled");
+  });
 }
+whichDay()

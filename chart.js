@@ -41,6 +41,6 @@ function drawChart() {
   var chart = new google.visualization.Histogram(document.getElementById('chart_div'));
   chart.draw(data, options);
 }
-$(window).resize(function(){
-  drawChart1();
-});
+// $(window).resize(function(){
+//   drawChart1();
+// });
