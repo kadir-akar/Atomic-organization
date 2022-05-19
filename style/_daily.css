@@ -31,7 +31,7 @@ a {
 }
 #countdown {
   font-size: 155px;
-  margin-top: 30%;
+  margin-top: 2rem;
 }
 a:hover {
   color:var(--purple);
@@ -84,6 +84,9 @@ li {
 }
 .tomato{
   background-color: tomato;
+}
+.dark-blue{
+  background-color: #f4a261;
 }
 .purple{
   background-color: var(--purple);

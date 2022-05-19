@@ -6,9 +6,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style\style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"
-    integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <title>Atomic Habits</title>
 </head>
 
@@ -24,6 +21,7 @@
       </nav>
     </div>
   </header>
+  <div class="gradient"></div>
   <div id="hero-section">
     <div class="container">
 
@@ -35,7 +33,7 @@
         </div>
         <p class="enter box-shadow"></p>
         <div id="days" class="center box-shadow">
-          <section class="day su">
+          <div class="day su">
             <p>P</p>
             <form action="" id="pomodoro" class="center inbox">
               <input type="checkbox" id="check" class="sunday-ch" disabled>
@@ -60,8 +58,8 @@
               <input type="checkbox" id="check" class="sunday-ch" disabled>
             </form>
             <button onclick="cleanTheDay(sundaych)" class="clean sunday-ch" disabled>X</button>
-          </section>
-          <section class="day mo">
+          </div>
+          <div class="day mo">
             <p>PT</p>
             <form action="" id="pomodoro" class="center inbox">
               <input type="checkbox" id="check" class="monday-ch" disabled>
@@ -86,8 +84,8 @@
               <input type="checkbox" id="check" class="monday-ch" disabled>
             </form>
             <button onclick="cleanTheDay(mondaych)" class="clean monday-ch" disabled>X</button>
-          </section>
-          <section class="day tu">
+          </div>
+          <div class="day tu">
             <p>S</p>
             <form action="" id="pomodoro" class="center inbox">
               <input type="checkbox" id="check" class="tuesday-ch" disabled>
@@ -112,8 +110,8 @@
               <input type="checkbox" id="check" class="tuesday-ch" disabled>
             </form>
             <button onclick="cleanTheDay(tuesdaych)" class="clean tuesday-ch" disabled>X</button>
-          </section>
-          <section class="day we">
+          </div>
+          <div class="day we">
             <p>Ç</p>
             <form action="" id="pomodoro" class="center inbox">
               <input type="checkbox" id="check" class="wednesday-ch" disabled>
@@ -138,8 +136,8 @@
               <input type="checkbox" id="check" class="wednesday-ch" disabled>
             </form>
             <button onclick="cleanTheDay(wednesdaych)" class="clean wednesday-ch" disabled>X</button>
-          </section>
-          <section class="day th">
+          </div>
+          <div class="day th">
             <p>PR</p>
             <form action="" id="pomodoro" class="center inbox">
               <input type="checkbox" id="check" class="Thursday-ch" disabled>
@@ -164,8 +162,8 @@
               <input type="checkbox" id="check" class="Thursday-ch" disabled>
             </form>
             <button onclick="cleanTheDay(thursdaych)" class="clean Thursday-ch" disabled>X</button>
-          </section>
-          <section class="day fr">
+          </div>
+          <div class="day fr">
             <p>C</p>
             <form action="" id="pomodoro" class="center inbox">
               <input type="checkbox" id="check" class="friday-ch" disabled>
@@ -190,8 +188,8 @@
               <input type="checkbox" id="check" class="friday-ch" disabled>
             </form>
             <button class="clean friday-ch" onclick="cleanTheDay(fridaych)" disabled>X</button>
-          </section>
-          <section class="day sa">
+          </div>
+          <div class="day sa">
             <p>CT</p>
             <form action="" id="pomodoro" class="center inbox">
               <input type="checkbox" id="check" class="saturday-ch" disabled>
@@ -216,7 +214,7 @@
               <input type="checkbox" id="check" class="saturday-ch" disabled>
             </form>
             <button class="clean saturday-ch" onclick="cleanTheDay(saturdaych)" disabled>X</button>
-          </section>
+          </div>
       </section>
     </div>
     <div class="timer box-shadow">
@@ -224,9 +222,12 @@
         <p id="countdown">00:00</p>
         <button class="minute box-shadow cornflowerblue" id="twentyfive" onclick="timer(1500)">25 DAKİKA</button>
         <button class="minute box-shadow cornflowerblue " id="fifty" onclick="timer(3000)">50 DAKİKA</button>
-        <button class="minute box-shadow tomato" id="reset" onclick="timer(0)">Reset</button>
+        <button class="minute box-shadow dark-blue" id="reset" onclick="timer(300)">5 DK MOLA</button>
+        <button class="minute box-shadow dark-blue" onclick="timer(600)">10 DK MOLA</button>
+        <button class="minute box-shadow tomato" id="reset" onclick="timer(0)">RESET</button>
       </div>
       <div class="info box-shadow">
+        <div class="gradient"></div>
         <div class="goal">
           <span>Hedef:</span>
         </div>
@@ -234,18 +235,18 @@
           <span>İsim:</span>
         </div>
         <div class="pomodoro-goal">
-          <span>pomodoro:</span>
+          <span>Pomodoro:</span>
         </div>
       </div>
     </div>
 
   </div>
-
   <section id="pointSection">
-    
-    <div id="point" class="box-shadow">
-      
-      <div id="chart_div" class="chart" style="width: 1200px; height: 700px;"></div>
+    <div class="chart">
+      <div class="gradient"></div>
+      <canvas id="myChart">
+      </canvas>
+      <div class="gradient"></div>
     </div>
 
   </section>
@@ -276,7 +277,7 @@
             <label for="hour">Günde Kaç pomodoro yapman gerek</label>
             <input type="number" class="form-control" name="hour" max="20" required>
           </div>
-          <button class="submit cornflowerblue box-shadow">Kayıt ol</button>
+          <button class="submit cornflowerblue box-shadow" type="submit">kaydet</button>
           <button class="unsubmit box-shadow tomato">Kaydı sil</button>
         </form>
       </div>
@@ -284,8 +285,9 @@
   </div>
   </div>
 </body>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"
+  integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="profile.js"></script>
 <script src="chart.js"></script>
 <script src="app.js"></script>

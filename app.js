@@ -26,7 +26,9 @@ function cleanTheDay(day) {
     localStorage.clear(day);
   }
 }
-
+window.addEventListener('DOMContentLoaded', () => {
+  whichDay()
+});
 function timer(seconds) {
   //clear any existing timers
   clearInterval(countTime);
@@ -87,6 +89,7 @@ var loadFile = function (event) {
   var image = document.getElementById("output");
   image.src = URL.createObjectURL(event.target.files[0]);
 };
+
 const days = [
   mondaych,
   tuesdaych,
@@ -96,7 +99,6 @@ const days = [
   saturdaych,
   sundaych,
 ];
-// console.log(dayForCheckbox);
 
 function whichDay() {
   theDay = days[today-1]
@@ -104,4 +106,3 @@ function whichDay() {
     e.removeAttribute("disabled");
   });
 }
-whichDay()
