@@ -1,2 +1,2 @@
 # Atomic-organization
-this app is for creating a hobby
+this app is for tracking a hobby
