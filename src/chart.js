@@ -18,15 +18,15 @@ const data = {
   labels,
   datasets: [
     {
-      data: [5, 2, 12, 6, 6, 7, 2],
+      data: [5, 7, 12, 6, 4, 7, 2],
       label: "Performans",
       fill: true,
       backgroundColor: gradient,
       borderColor:"#fff",
+      
     },
   ],
 };
-
 const config = {
   type: "line",
   data: data,
@@ -36,5 +36,13 @@ const config = {
     hoverRadius:12,
     hitRadius:25,
   },
-};
+}
+function arttır(){
+  myChart.data.datasets[0].data[2]++
+  console.log(myChart.data.datasets[0].data)
+  myChart.update();
+}
+
+
 const myChart = new Chart(ctx, config);
+console.log(myChart.data.datasets[0].data)
