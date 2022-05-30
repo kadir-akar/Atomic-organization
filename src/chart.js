@@ -1,5 +1,5 @@
-const ctx = document.getElementById("myChart").getContext("2d");
 
+const ctx = document.getElementById("myChart").getContext("2d");
 let gradient = ctx.createLinearGradient(0, 0, 0, 400);
 gradient.addColorStop(0, "rgba(58,123,231,1)");
 gradient.addColorStop(1,"rgba(0,210,255,0.3)")
@@ -18,7 +18,7 @@ const data = {
   labels,
   datasets: [
     {
-      data: [5, 7, 12, 6, 4, 7, 2],
+      // data: [, , , , , , ],
       label: "Performans",
       fill: true,
       backgroundColor: gradient,
@@ -37,12 +37,4 @@ const config = {
     hitRadius:25,
   },
 }
-function arttır(){
-  myChart.data.datasets[0].data[2]++
-  console.log(myChart.data.datasets[0].data)
-  myChart.update();
-}
-
-
 const myChart = new Chart(ctx, config);
-console.log(myChart.data.datasets[0].data)

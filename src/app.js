@@ -1,20 +1,12 @@
 const counttf = document.getElementById("twentyfive");
 const countdown = document.getElementById("countdown");
 const countfifty = document.getElementById("fifty");
-const reset = document.getElementById("reset");
 const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]');
-const sundaych = document.querySelectorAll(".sunday-ch");
-const mondaych = document.querySelectorAll(".monday-ch");
-const tuesdaych = document.querySelectorAll(".tuesday-ch");
-const wednesdaych = document.querySelectorAll(".wednesday-ch");
-const thursdaych = document.querySelectorAll(".Thursday-ch");
-const fridaych = document.querySelectorAll(".friday-ch");
-const saturdaych = document.querySelectorAll(".saturday-ch");
 const totalPomodoros = document.querySelector(".TotalPomodoros");
 const quoteH = document.getElementById("checkbox-section");
 const daily = document.getElementById("daily");
 
-let totalC = 0;
+let count = 0;
 let countTime;
 let lastChecked;
 let theDay;
@@ -31,9 +23,9 @@ function cleanTheDay(day) {
     totalC = 0;
   }
 }
-window.addEventListener("DOMContentLoaded", () => {
-  whichDay();
-});
+// window.addEventListener("DOMContentLoaded", () => {
+//   whichDay();
+// });
 function timer(seconds) {
   //clear any existing timers
   clearInterval(countTime);
@@ -80,21 +72,14 @@ checkboxes.forEach((checkbox) => {
 
 //check the day
 const daysOfWeek = [
+  "sundaych",
   "mondaych",
   "tuesdaych",
   "wednesdaych",
   "thursdaych",
   "fridaych",
   "saturdaych",
-  "sundaych",
 ];
-
-function whichDay() {
-  theDay = daysOfWeek[today - 1];
-  theDay.forEach((e) => {
-    e.removeAttribute("disabled");
-  });
-}
 
 //quote generator
 const quotes = [
@@ -137,38 +122,53 @@ for (let i = 0; i < 7; i++) {
   reset.setAttribute("onclick", `cleanTheDay(${daysOfWeek[i]})`);
   reset.classList = `clean ${classOfDays[i]}`;
   reset.innerText = "X";
-
+  
   day.appendChild(p);
   day.appendChild(form);
   days.appendChild(day);
-
+  
   for (let j = 0; j < 20; j++) {
     const checkboxes = document.createElement("input");
     checkboxes.type = "checkbox";
     checkboxes.id = "check";
     checkboxes.classList = classOfDays[i];
-    count = localStorage.getItem(i) ?? null;
-    checkboxes.addEventListener("click", save);
+    count = localStorage.getItem(classOfDays[i]) ?? null;
+    checkboxes.addEventListener("click", saveToLocal);
     if (
       checkboxes.classList != classOfDays[today] &&
       reset.classList != classOfDays[today]
-    ) {
-      checkboxes.disabled = true;
-      reset.disabled = true;
-    }
+      ) {
+        checkboxes.disabled = true;
+        reset.disabled = true;
+      }
     if (j < count) {
-      checkboxes.disabled = false;
-      reset.disabled = false;
-      data["datasets"][0]["data"][i] = count;
       myChart.update();
     }
     form.appendChild(checkboxes);
+    //reset checkboxes
+    reset.addEventListener("click", () => {
+      if (checkboxes.classList == classOfDays[today]) {
+        checkboxes.checked = false;
+      }
+    });
   }
   day.appendChild(reset);
   // daily.append(days)
   // daily.appendChild(day);
 }
-function save() {
-  localStorage.setItem(date, count);
-  myChart.update();
+function saveToLocal() {
+  // checkboxes.forEach((e)=>{
+  //   if(e.checked == true){
+  //     console.log("hi")
+  //   }
+  // })
+  checkboxes.checked == true
+    let theDay = classOfDays[today]
+    count++
+    localStorage.setItem(theDay,count)
+    myChart.data.datasets[0].data[today] = count
+    myChart.update()
+    console.log("hi")
+  
 }
+console.log(myChart.data.datasets[0].data);
