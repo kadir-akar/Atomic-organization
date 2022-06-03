@@ -16,16 +16,6 @@ const today = d.getDay();
 
 //functions
 
-//clean checkboxes
-function cleanTheDay(day) {
-  for (const checkbox of day) {
-    checkbox.checked = false;
-    totalC = 0;
-  }
-}
-// window.addEventListener("DOMContentLoaded", () => {
-//   whichDay();
-// });
 function timer(seconds) {
   //clear any existing timers
   clearInterval(countTime);
@@ -61,15 +51,6 @@ var loadFile = function (event) {
   image.src = URL.createObjectURL(event.target.files[0]);
 };
 
-//total pomodoro
-checkboxes.forEach((checkbox) => {
-  checkbox.addEventListener("click", () => {
-    if (checkbox.checked == true) {
-      totalC++;
-    }
-  });
-});
-
 //check the day
 const daysOfWeek = [
   "sundaych",
@@ -79,6 +60,15 @@ const daysOfWeek = [
   "thursdaych",
   "fridaych",
   "saturdaych",
+];
+const classOfDays = [
+  "sunday-ch",
+  "monday-ch",
+  "tuesday-ch",
+  "wednesday-ch",
+  "thursday-ch",
+  "friday-ch",
+  "saturday-ch",
 ];
 
 //quote generator
@@ -97,17 +87,9 @@ function generateQuote() {
 generateQuote();
 
 const nameOfDays = ["P", "PT", "S", "Ç", "PR", "C", "CT"];
-const classOfDays = [
-  "sunday-ch",
-  "monday-ch",
-  "tuesday-ch",
-  "wednesday-ch",
-  "Thursday-ch",
-  "friday-ch",
-  "saturday-ch",
-];
 
 // day generator
+
 for (let i = 0; i < 7; i++) {
   const days = document.getElementById("days");
   const day = document.createElement("div");
@@ -119,56 +101,72 @@ for (let i = 0; i < 7; i++) {
   p.innerHTML = nameOfDays[i];
   form.id = "pomodoro";
   form.classList = `center inbox`;
-  reset.setAttribute("onclick", `cleanTheDay(${daysOfWeek[i]})`);
   reset.classList = `clean ${classOfDays[i]}`;
   reset.innerText = "X";
-  
+
   day.appendChild(p);
   day.appendChild(form);
   days.appendChild(day);
-  
+
   for (let j = 0; j < 20; j++) {
     const checkboxes = document.createElement("input");
     checkboxes.type = "checkbox";
     checkboxes.id = "check";
     checkboxes.classList = classOfDays[i];
-    count = localStorage.getItem(classOfDays[i]) ?? null;
-    checkboxes.addEventListener("click", saveToLocal);
+    checkboxes.addEventListener("click", () => {
+      if (checkboxes.checked) {
+        count++;
+      } else {
+        count--;
+      }
+      saveToLocal();
+    });
     if (
       checkboxes.classList != classOfDays[today] &&
       reset.classList != classOfDays[today]
-      ) {
-        checkboxes.disabled = true;
-        reset.disabled = true;
-      }
-    if (j < count) {
+    ) {
+      checkboxes.disabled = true;
+      reset.disabled = true;
+    } else {
       myChart.update();
     }
     form.appendChild(checkboxes);
-    //reset checkboxes
     reset.addEventListener("click", () => {
       if (checkboxes.classList == classOfDays[today]) {
         checkboxes.checked = false;
+        localStorage.removeItem(classOfDays[today]);
+        count = 0;
+        myChart.update();
       }
     });
   }
   day.appendChild(reset);
-  // daily.append(days)
-  // daily.appendChild(day);
 }
 function saveToLocal() {
-  // checkboxes.forEach((e)=>{
-  //   if(e.checked == true){
-  //     console.log("hi")
-  //   }
-  // })
-  checkboxes.checked == true
-    let theDay = classOfDays[today]
-    count++
-    localStorage.setItem(theDay,count)
-    myChart.data.datasets[0].data[today] = count
-    myChart.update()
-    console.log("hi")
-  
+  let theDay = classOfDays[today];
+  localStorage.setItem(theDay, count);
+  myChart.data.datasets[0].data[today - 1] = count;
+  myChart.update();
 }
-console.log(myChart.data.datasets[0].data);
+
+function loadFromLocal() {
+  const sunday = document.querySelectorAll(".sunday-ch");
+  const monday = document.querySelectorAll(".monday-ch");
+  const tuesday = document.querySelectorAll(".tuesday-ch");
+  const wednesday = document.querySelectorAll(".wednesday-ch");
+  const thursday = document.querySelectorAll(".thursday-ch");
+  const friday = document.querySelectorAll(".friday-ch");
+  const saturday = document.querySelectorAll(".saturday-ch");
+  const days = [sunday, monday, tuesday, wednesday, thursday, friday, saturday];
+
+  for (let i = 0; i < 7; i++) {
+    let localDay = classOfDays[i];
+    let local = localStorage.getItem(localDay);
+    myChart.data.datasets[0].data[i] = localStorage.getItem(localDay);
+    myChart.update();
+    for (let m = 0; m < local; m++) {
+      days[i][m].checked =true
+    }
+  }
+}
+loadFromLocal();

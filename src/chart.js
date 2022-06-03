@@ -18,7 +18,7 @@ const data = {
   labels,
   datasets: [
     {
-      // data: [, , , , , , ],
+      // data: [0,0,0,0,0,0,0],
       label: "Performans",
       fill: true,
       backgroundColor: gradient,
